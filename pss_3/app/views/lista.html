@@ -1,0 +1,34 @@
+{extends file="index.html"}
+{block name=content}
+
+
+<!-- Shop Start -->
+
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID_user</th>
+        <th>login</th>
+        <th>email</th>
+      
+      
+       
+    </tr>
+</thead>
+<tbody>
+{foreach $data as $y}
+{strip}
+    <tr>
+        <td>{$y["ID_user"]}</td>
+        <td>{$y["username"]}</td>
+        <td>{$y["email"]}</td> 
+    </tr>
+    {/strip}  
+    {/foreach}
+    </tbody>
+
+</table>
+        
+
+{/block}

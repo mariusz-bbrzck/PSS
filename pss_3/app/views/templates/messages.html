@@ -1,0 +1,15 @@
+{if $msgs->isError()}
+<div>
+
+                <ul>
+                    {foreach $msgs->getMessages() as $msg}
+                        {strip}
+                            <li class="">{$msg->text}</li>
+                        {/strip}
+                    {/foreach}
+                </ul>
+            </div>
+
+
+
+{/if}
