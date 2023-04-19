@@ -1,0 +1,79 @@
+{extends file="index.html"}
+{block name=content}
+
+<!-- Shop Start -->
+
+<!-- Search Bar Start -->
+<div class="col-lg-3 col-md-12">
+    <form method="post" action="{$conf->action_url}action_sklepFiltr">
+        <div class="form-group">
+            <input type="text" class="form-control" name="searchText" placeholder="Wyszukaj produkt..." />
+            <button type="submit" class="btn btn-primary mt-2 w-100">Szukaj</button>
+        </div>
+    </form>
+</div>
+<!-- Search Bar End -->
+<!-- Pagination Start -->
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" action="{$conf->action_url}action_sklepStronnicowanie">
+        <ul class="pagination justify-content-center">
+            {if $strona > 1}
+            <li class="page-item"><a class="page-link" href="?strona={$strona-1}">&laquo;</a></li>
+            {/if}
+            {foreach from=range(1, $liczba_stron) item=page}
+            {if $page == $strona}
+            <li class="page-item active"><a class="page-link" href="?strona={$page}">{$page}</a></li>
+            {else}
+            <li class="page-item"><a class="page-link" href="?strona={$page}">{$page}</a></li>
+            {/if}
+            {/foreach}
+            {if $strona < $liczba_stron}
+            <li class="page-item"><a class="page-link" href="?strona={$strona+1}">&raquo;</a></li>
+            {/if}
+        </ul>
+    </form>
+    </div>
+</div>
+<!-- Shop Product Start -->
+<div class="col-lg-9 col-md-12">
+    <div class="row pb-3">
+        <div class="col-12 pb-1">
+        </div>
+        
+        {foreach $product as $p}
+        {strip}
+        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{$p['img']}" alt="">
+                </div>
+                
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{$p["product_name"]}</h6>
+                    <div class="d-flex justify-content-center">
+                        {if count($conf->roles)>0}
+                        <a href="{$conf->action_url}dodajProdukt/{$p['ID_product']}" class="dodajProdukt">+ Dodaj do koszyka</a>
+                        {else} 
+                        <a href="{$conf->action_root}logowanieWymagane" class="dodajProdukt">+ Dodaj do koszyka</a>
+                        {/if}
+                        <h6>${$p["product_prize"]}</h6>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light border">
+                    <form action="{$conf->action_url}rejestracja" method="post" class="pure-form pure-form-aligned bottom-margin">
+                    </form>
+                </div>
+            </div>
+        </div>
+        {/strip}
+        {/foreach}
+    </div>
+</div>
+
+
+
+<!-- Shop End -->
+
+
+{/block}
