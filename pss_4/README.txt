@@ -1,2 +1,2 @@
 Dodane skrypty do pliku index.html 
-Zadanie wykonane na RejestracjaCtrl.php oraz rejestracja.html
+Zadanie wykonane na kontrolerze Rejestracja oraz rejestracja.html
