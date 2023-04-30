@@ -1,0 +1,56 @@
+{extends file="index.html"}
+{block name=content}
+ 
+
+<!-- Shop Start -->
+
+
+        <!-- Shop Product Start -->
+        <div class="col-lg-9 col-md-12">
+            <div class="row pb-3">
+                <div class="col-12 pb-1">
+                    {if count($conf->roles)>0}
+                    <a href="{$conf->action_url}zamow" class="primary-btn">Zamów</a>
+                    {else} 
+                
+                    <a href="{$conf->action_root}logowanieWymagane" class="logowanie">+ Zaloguj się i dodaj przedmioty do koszyka</a>
+                    {/if}
+
+                </div>  
+                {foreach $product as $p}
+                {strip}
+               
+                <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                    <div class="card product-item border-0 mb-4">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <img class="img-fluid w-100" src="{$p['img']}" alt="">
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                            <h6 class="text-truncate mb-3">{$p["product_name"]}</h6>
+                            <div class="d-flex justify-content-center">
+                            </div>  
+                                <h6 class="text-truncate mb-3">{$p["quantity"]}  szt. </h6> 
+                            </div>
+                            <a href="{$conf->action_url}/{$p['ID_product']}" class="card product-item border-0 mb-4">- Usuń z koszyka</a>
+                            
+                        </div>
+                            <div class="quantity">
+                        
+
+                            
+                    </div>
+                </div>
+                {/strip} 
+                {/foreach}  
+            
+                 
+        </div>
+          
+    </div>
+</div>
+<!-- Shop End -->
+
+
+
+
+{/block}

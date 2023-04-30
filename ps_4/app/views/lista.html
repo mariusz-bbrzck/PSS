@@ -1,0 +1,40 @@
+{extends file="index.html"}
+{block name=content}
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <form method="post" action="{$conf->action_root}dodaj">
+                <div class="form-group">
+                    <label for="login">Login:</label>
+                    <input type="text" class="form-control" id="login" name="login" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Hasło:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Dodaj użytkownika</button>
+            </form>
+        
+        </tr>
+    </thead>
+    <tbody>
+
+        {foreach $data as $y}
+            {strip}
+            <tr>
+                <td>{$y["ID_user"]}</td>
+                <td>{$y["username"]}</td>
+                <td>{$y["email"]}</td>
+                
+            </tr>
+            {/strip}
+        {/foreach}
+    </tbody>
+</table>
+
+{/block}
